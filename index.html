@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+    button {
+        background-color: rgb(2, 190, 2);
+        border: 1px solid #1b4606; 
+        padding: 1em;
+        border-radius: 2px;
+        margin-top: 1em;
+        float: right; 
+        cursor: pointer;
+    }
+    #fout{
+        min-height: 20em;
+    }
+    main {
+        max-width: 720px;
+        margin: auto;
+        margin-top: 2em;
+    }
+    textarea{
+        width: 100%;
+        margin-top: 2em;
+        background-color: antiquewhite;
+        min-height: 15em;
+    }
+
+    nav > ol {
+        display: flex;
+        list-style: none;   
+        justify-content: flex-end;
+    }
+    ol > li{
+        margin-right: .5em;
+        background-color: cyan;
+        padding: .7em;
+        border-top: solid 2px red;
+        cursor: pointer;
+    }
+
+    #evalex {
+        display: none;
+    }
+
+    #evalex > fieldset {
+        height: 7em;
+    }
+
+    #evalex legend + div {
+        text-align: center;
+        line-height: 7em;
+    }    
+
+    .switch {
+        position: relative;
+        display: inline-block;
+        width: 70px; 
+        height: 1.2em;  
+    }
+
+    .switch input{
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+
+    .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #abc;
+        padding: .1em;
+    }
+    .slider::before {
+        position: absolute;
+        content: "";
+        height: 22px;
+        width: 22px;
+        left: 4px;
+        bottom: 0px; 
+        background-color: white;
+        transition: .4s
+    }
+    input[type="checkbox"] + .slider {
+        background-color: #2196f3;
+    }
+
+    input:checked + .slider:before {
+        transform: translate(26px);
+    }
+
+    #evalincontainer {
+        margin-top: 2em;
+    }
+    #evalincontainer >div {
+        display: flex;
+        gap: 1em; 
+
+    }
+    #evalincontainer input{
+        flex: 1 0 auto; 
+        height: 2em; 
+    }
+</style>
+<script src="index.js"></script>
+</head>
+<body>
+    <main>
+        <nav>
+            <ol>
+                <li id="csinnerhtml"> innerHTML</li>
+                <li id="cseval"> eval</li>
+                <li id="csredirects">  Unvalidated Redirects</li>
+            </ol>
+        </nav>
+        <section id="formattedout">
+            <fieldset>
+                <legend>Formatted Output</legend>
+                <div id="fout"> </div>
+            </fieldset>
+            <div id="outcontainer">
+                <label style="" class="">
+                    <span class=""> innerText</span>
+                    <input type="checkbox">
+                    <span class=" "> innerHTML</span>
+                </label>
+                <textarea id="tinput">            </textarea>
+            </div>
+            
+        </section>
+
+        <section id="evalex">
+            <fieldset>
+                <legend>Eval Output</legend>
+                <div id="evalout"> </div>
+            </fieldset>
+            <div id="evalincontainer">
+                <div >
+                    <input id="ina" type="text"/>
+                    <input id="inb" type="text"/>
+                </div>
+            </div>
+
+            <button id="evalcompute">Compute</button>
+        </section>
+    </main>
+</body>
+</html>
