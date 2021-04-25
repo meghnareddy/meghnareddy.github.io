@@ -9,6 +9,7 @@ function registerEvents(){
     )
     
     document.getElementById('evalcompute').addEventListener('click', onEvalCompute)
+    document.getElementById('setloc').addEventListener('click', setDocLoc)
     
     
 }
@@ -27,19 +28,21 @@ function onNavBtnClick(e){
     switch(btn){
         case 'csinnerhtml':
             document.getElementById('evalex').style.display = "none";
-            
+            document.getElementById('unvalidatedred').style.display = "none";
             // document.location = "#formattedout"
             document.getElementById('formattedout').style.display = "block";
             break; 
         case 'cseval':
             document.getElementById('formattedout').style.display = "none";
+            document.getElementById('unvalidatedred').style.display = "none";
             document.location = "#cseval"
             document.getElementById('evalex').style.display = "block";
             break; 
         case 'csredirects': 
             document.getElementById('formattedout').style.display = "none";
-            document.location = "#cseval"
-            document.getElementById('evalex').style.display = "block";
+            document.getElementById('evalex').style.display = "none";
+            document.location = "#"
+            document.getElementById('unvalidatedred').style.display = "block";
             break; 
     }
 }
@@ -49,4 +52,18 @@ function onEvalCompute(e){
     let b = document.getElementById('inb').value; 
     let c = eval(a + b);   // Dangerous  & Weak typed concatenation instead of addition 
     document.getElementById('evalout').innerHTML = c;  //Dangeorus 
+}
+
+window.onhashchange = e => {
+    const hash = window.location.hash; 
+    const loc = hash.slice(1);
+    console.log("hash change", hash);
+    // window.location = loc; 
+}
+
+function setDocLoc(e){
+    const hash = window.location.hash; 
+    console.log("hash change", hash);
+    const loc = hash.slice(1);
+    window.location = loc
 }
