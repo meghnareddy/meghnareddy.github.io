@@ -3,27 +3,27 @@ window.onload = function(){
 }
 
 function registerEvents(){
-    document.getElementById('tinput').addEventListener('input', onTextInput)
+    document.getElementById('tinput').addEventListener('input', onTextInput);
     document.querySelectorAll('nav ol li').forEach(
-        e => e.addEventListener('click', onNavBtnClick)
-    )
+        function(e){e.addEventListener('click', onNavBtnClick)}
+    );
     
-    document.getElementById('evalcompute').addEventListener('click', onEvalCompute)
-    document.getElementById('setloc').addEventListener('click', setDocLoc)
+    document.getElementById('evalcompute').addEventListener('click', onEvalCompute);
+    document.getElementById('setloc').addEventListener('click', setDocLoc);
     
     
 }
 
 function onTextInput(e){
-    let v = e.target.value; 
-    let outele = document.getElementById('fout');
+    var v = e.target.value; 
+    var outele = document.getElementById('fout');
     outele.innerHTML = v; 
 }
 
 
 function onNavBtnClick(e){
 
-    let btn = e.target.id; 
+    var btn = e.target.id; 
     console.log(btn);
     switch(btn){
         case 'csinnerhtml':
@@ -48,13 +48,13 @@ function onNavBtnClick(e){
 }
 
 function onEvalCompute(e){
-    let a = document.getElementById("ina").value; 
-    let b = document.getElementById('inb').value; 
-    let c = eval(a + b);   // Dangerous  & Weak typed concatenation instead of addition 
+    const a = document.getElementById("ina").value; 
+    const b = document.getElementById('inb').value; 
+    const c = eval(a + b);   // Dangerous  & Weak typed concatenation instead of addition 
     document.getElementById('evalout').innerHTML = c;  //Dangeorus 
 }
 
-window.onhashchange = e => {
+window.onhashchange = function(e) {
     const hash = window.location.hash; 
     const loc = hash.slice(1);
     console.log("hash change", hash);
